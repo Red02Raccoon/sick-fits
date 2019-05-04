@@ -35,3 +35,8 @@ with import datamodel.graphql file can use described types
 describe resolvers for Query, Mutation
 
 если Query из prisma и public facing одинаковые можно использовать forwardTo from 'prisma-binding'
+
+
+//
+у prisma свой playground - можно увидеть все сгенерированый доп функционал по запросам
+в личном кабинете
