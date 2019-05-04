@@ -9,6 +9,12 @@
 
   prisma deploy
 
+призма добавляет возможность фильтрации по данным из БД
+
+datamodel.prisma -> generated/prisma.graphql (for prisma and connect to DB)
+schema.graphql (for public facing API)
+
+
 2. Connect to prisma
   create db.js
 
@@ -17,3 +23,15 @@
 4. init server with settings (index.js)
 
 5. npm run dev
+
+
+//
+datamodel.graphql (for prisma) - describe types
+after changes -> deploy
+
+schema.graphql (for public facing) - describe Query, Mutation
+with import datamodel.graphql file can use described types
+
+describe resolvers for Query, Mutation
+
+если Query из prisma и public facing одинаковые можно использовать forwardTo from 'prisma-binding'
