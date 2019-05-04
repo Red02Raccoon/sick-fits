@@ -1,0 +1,19 @@
+.env
+
+1. Setup Prisma
+  npm i -g prisma
+  prisma login
+  prisma init
+
+  prisma.yml (settings)
+
+  prisma deploy
+
+2. Connect to prisma
+  create db.js
+
+3. Create Server function (createServer.js)
+
+4. init server with settings (index.js)
+
+5. npm run dev
