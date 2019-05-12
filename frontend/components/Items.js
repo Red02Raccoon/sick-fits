@@ -8,8 +8,6 @@ import { config } from '../utils';
 
 const { perPage } = config
 
-// orderBy: createdAt_DESC
-
 const ALL_ITEMS_QUERY = gql`
   query ALL_ITEMS_QUERY($skip: Int = 0, $first: Int = ${perPage}) {
     items(first: $first, skip: $skip) {
