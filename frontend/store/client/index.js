@@ -11,10 +11,10 @@ const createClient = ({ headers }) => {
     request: operation => {
       operation.setContext({
         fetchOptions: {
-          credencials: 'include'
+          credentials: 'include',
         },
-        headers
-      })
+        headers,
+      });
     }
   })
 }

@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 
 const CURRENT_USER_QUERY = gql`
-  query {
+  query CURRENT_USER_QUERY {
     me {
       id
       email
@@ -15,11 +15,11 @@ const CURRENT_USER_QUERY = gql`
 
 const User = props => (
   <Query {...props} query={CURRENT_USER_QUERY}>
-    {payload => props.children(payload)}
+    {payload => console.log(payload) || props.children(payload)}
   </Query>
 );
 
-User.PropTypes = {
+User.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
