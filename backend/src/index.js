@@ -28,6 +28,6 @@ server.start(
     },
   },
   deets => {
-    console.log('port', deets.port)
+    console.log('port is running on port: ', deets.port)
   },
 )
