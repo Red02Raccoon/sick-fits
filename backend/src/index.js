@@ -1,32 +1,33 @@
-const cookieParser = require('cookie-parser');
-const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
 
 require('dotenv').config()
 const createServer = require('./createServer')
 const db = require('./db')
 
-const server = createServer();
+const server = createServer()
 
-server.express.use(cookieParser());
+server.express.use(cookieParser())
 
 server.express.use((req, res, next) => {
-  const { token } = req.cookies;
+  const { token } = req.cookies
 
   if (token) {
-    const { userId } = jwt.verify(token, process.env.APP_SECRET);
+    const { userId } = jwt.verify(token, process.env.APP_SECRET)
     // put the userId onto the req for future requests to access (ctx.request)
-    req.userId = userId;
+    req.userId = userId
   }
-  next();
-});
+  next()
+})
 
-server.start({
+server.start(
+  {
     cors: {
       credentials: true,
-      origin: process.env.FRONTEND_URL
-    }
+      origin: process.env.FRONTEND_URL,
+    },
   },
-  (deets) => {
+  deets => {
     console.log('port', deets.port)
-  }
+  },
 )
