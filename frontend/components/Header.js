@@ -1,20 +1,20 @@
-import Link from 'next/link';
-import styled from 'styled-components';
-import Router from 'next/router';
-import NProgress from 'nprogress';
-import Nav from './Nav';
+import Link from 'next/link'
+import styled from 'styled-components'
+import Router from 'next/router'
+import NProgress from 'nprogress'
+import Nav from './Nav'
 
 Router.onRouteChangeStart = () => {
-  NProgress.start();
-};
+  NProgress.start()
+}
 
 Router.onRouteChangeComplete = () => {
-  NProgress.done();
-};
+  NProgress.done()
+}
 
 Router.onRouteChangeError = () => {
-  NProgress.done();
-};
+  NProgress.done()
+}
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -33,7 +33,7 @@ const Logo = styled.h1`
     margin: 0;
     text-align: center;
   }
-`;
+`
 
 const StyledHeader = styled.header`
   .bar {
@@ -52,23 +52,23 @@ const StyledHeader = styled.header`
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid ${props => props.theme.lightgrey};
   }
-`;
+`
 
 const Header = () => (
   <StyledHeader>
-    <div className="bar">
+    <div className='bar'>
       <Logo>
-        <Link href="/">
+        <Link href='/'>
           <a>Sick Fits</a>
         </Link>
       </Logo>
       <Nav />
     </div>
-    <div className="sub-bar">
+    <div className='sub-bar'>
       <p>Search</p>
     </div>
     <div>Cart</div>
   </StyledHeader>
-);
+)
 
-export default Header;
+export default Header

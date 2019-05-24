@@ -1,10 +1,10 @@
-import React from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import Head from 'next/head';
-import Link from 'next/link';
-import PaginationStyles from './styles/PaginationStyles';
-import { config } from '../utils';
+import React from 'react'
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
+import Head from 'next/head'
+import Link from 'next/link'
+import PaginationStyles from './styles/PaginationStyles'
+import { config } from '../utils'
 
 const { perPage } = config
 
@@ -16,15 +16,15 @@ const PAGINATION_QUERY = gql`
       }
     }
   }
-`;
+`
 
 const Pagination = props => (
   <Query query={PAGINATION_QUERY}>
     {({ data, loading, error }) => {
-      if (loading) return <p>Loading...</p>;
-      const count = data.itemsConnection.aggregate.count;
-      const pages = Math.ceil(count / perPage);
-      const page = props.page;
+      if (loading) return <p>Loading...</p>
+      const count = data.itemsConnection.aggregate.count
+      const pages = Math.ceil(count / perPage)
+      const page = props.page
       return (
         <PaginationStyles>
           <Head>
@@ -39,7 +39,7 @@ const Pagination = props => (
               query: { page: page - 1 },
             }}
           >
-            <a className="prev" aria-disabled={page <= 1}>
+            <a className='prev' aria-disabled={page <= 1}>
               ← Prev
             </a>
           </Link>
@@ -54,14 +54,14 @@ const Pagination = props => (
               query: { page: page + 1 },
             }}
           >
-            <a className="prev" aria-disabled={page >= pages}>
+            <a className='prev' aria-disabled={page >= pages}>
               Next →
             </a>
           </Link>
         </PaginationStyles>
-      );
+      )
     }}
   </Query>
-);
+)
 
-export default Pagination;
+export default Pagination

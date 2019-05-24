@@ -1,8 +1,6 @@
 #IDEs
 .next
 
-
-.vscode
 .DS_Store
 
 #modules
@@ -18,4 +16,3 @@ dist.zip
 *.log.*
 
 .env
-

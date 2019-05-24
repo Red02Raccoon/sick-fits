@@ -14,8 +14,8 @@ const createClient = ({ headers }) => {
           credentials: 'include',
         },
         headers,
-      });
-    }
+      })
+    },
   })
 }
 
