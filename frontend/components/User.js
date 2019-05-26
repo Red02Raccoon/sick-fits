@@ -3,19 +3,30 @@ import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 
 const CURRENT_USER_QUERY = gql`
-  query CURRENT_USER_QUERY {
+  query {
     me {
       id
       email
       name
       permissions
+      cart {
+        id
+        quantity
+        item {
+          id
+          price
+          image
+          title
+          description
+        }
+      }
     }
   }
 `
 
 const User = props => (
   <Query {...props} query={CURRENT_USER_QUERY}>
-    {payload => console.log(payload) || props.children(payload)}
+    {payload => props.children(payload)}
   </Query>
 )
 
