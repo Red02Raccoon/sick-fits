@@ -21,7 +21,7 @@
     "babel-plugin-styled-components": "^1.7.1",
     "date-fns": "^2.0.0-alpha.7",
     "downshift": "^2.2.3",
-    "enzyme": "^3.6.0",
+    "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
@@ -59,8 +59,7 @@
     ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
-      ".*": "babel-jest",
-      "^.+\\.js?$": "babel-jest"
+      ".*": "babel-jest"
     }
   },
   "//": "This is our babel config, I prefer this over a .babelrc file",
