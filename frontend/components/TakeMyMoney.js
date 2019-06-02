@@ -9,10 +9,6 @@ import calcTotalPrice from '../lib/calcTotalPrice'
 import Error from './ErrorMessage'
 import User, { CURRENT_USER_QUERY } from './User'
 
-import { config } from '../utils'
-
-const { STRIPE_PUBLIC_KEY } = config
-
 const CREATE_ORDER_MUTATION = gql`
   mutation createOrder($token: String!) {
     createOrder(token: $token) {
@@ -33,6 +29,7 @@ function totalItems(cart) {
 
 class TakeMyMoney extends React.Component {
   onToken = async (res, createOrder) => {
+    NProgress.start()
     console.log('On Token Called!')
     console.log(res.id)
     // manually call the mutation once we have the stripe token
@@ -41,7 +38,11 @@ class TakeMyMoney extends React.Component {
         token: res.id,
       },
     }).catch(err => {
-      alert('oops')
+      console.log(err.message)
+    })
+    Router.push({
+      pathname: '/order',
+      query: { id: order.data.createOrder.id },
     })
   }
   render() {
@@ -55,7 +56,7 @@ class TakeMyMoney extends React.Component {
                 name='Sick Fits'
                 description={`Order of ${totalItems(me.cart)} items!`}
                 image={me.cart.length && me.cart[0].item && me.cart[0].item.image}
-                stripeKey={STRIPE_PUBLIC_KEY}
+                stripeKey={process.env.STRIPE_PUBLIC_KEY}
                 currency='USD'
                 email={me.email}
                 token={res => this.onToken(res, createOrder)}

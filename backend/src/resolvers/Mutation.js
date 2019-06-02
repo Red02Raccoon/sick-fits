@@ -276,6 +276,7 @@ const Mutations = {
     // 1. Query the current user and make sure they are signed in
     const { userId } = ctx.request
     if (!userId) throw new Error('You must be signed in to complete this order.')
+
     const user = await ctx.db.query.user(
       { where: { id: userId } },
       `{
@@ -292,8 +293,6 @@ const Mutations = {
     const amount = user.cart.reduce((tally, cartItem) => tally + cartItem.item.price * cartItem.quantity, 0)
     console.log(`Going to charge for a total of ${amount}`)
     // 3. Create the stripe charge (turn token into $$$)
-
-    console.log('token', args.token)
     const charge = await stripe.charges
       .create({
         amount,
