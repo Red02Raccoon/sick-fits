@@ -9,7 +9,7 @@ import Signout from './Signout'
 const Nav = () => (
   <User>
     {({ data: { me } }) => (
-      <NavStyles>
+      <NavStyles data-test='nav'>
         <Link href='/shop'>
           <a>Shop</a>
         </Link>
