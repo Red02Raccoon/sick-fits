@@ -1,1 +1,0 @@
-у apollo-client под капотом есть redux
